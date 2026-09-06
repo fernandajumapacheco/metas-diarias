@@ -1,16 +1,42 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metas da Fernanda</title><link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metas Diárias da Fernanda</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body><main class="painel">
-<p class="etiqueta">MEU PRIMEIRO APP</p>
-<h1>Metas da Fernanda ✨</h1>
-<p id="data-atual"></p>
-<p class="subtitulo">Organize uma ideia por vez.</p>
-  <form id="formulario"><input id="nova-meta" placeholder="Digite uma nova meta…" required><button>Adicionar</button></form>
-  <div class="resumo"><span id="contador">0 metas</span><button id="limpar" type="button">Limpar concluídas</button></div>
-  <ul id="lista"></ul>
-</main><script src="script.js"></script></body>
+<body>
+  <main class="painel">
+    <p class="etiqueta">MEU PRIMEIRO APP</p>
+    <h1>Metas da Fernanda ✨</h1>
+    <p id="data-atual"></p>
+    <p class="subtitulo">Organize uma ideia por vez.</p>
+
+    <form id="formulario">
+      <input id="nova-meta" placeholder="Digite uma nova meta…" required>
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <div class="resumo">
+      <span id="contador">0 de 0 concluídas</span>
+      <button id="limpar" type="button">Limpar concluídas</button>
+    </div>
+    <ul id="lista"></ul>
+
+    <div class="acoes">
+      <button id="concluir-dia" type="button">✓ Concluir o dia</button>
+      <button id="exportar" type="button" class="secundario">Salvar backup</button>
+      <label class="botao secundario" for="arquivo-backup">Restaurar backup</label>
+      <input id="arquivo-backup" type="file" accept="application/json,.json" hidden>
+    </div>
+
+    <section class="historico">
+      <h2>Histórico por dia</h2>
+      <div id="historico-vazio">O histórico aparecerá aqui.</div>
+      <ul id="lista-historico"></ul>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
 </html>
