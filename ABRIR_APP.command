@@ -16,7 +16,7 @@ fi
 
 if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
   if curl -fsS "$URL" 2>/dev/null | grep -q "Metas Diárias para Meninas"; then
-    open "$URL"
+    open -na "Google Chrome" --args --app="$URL"
     exit 0
   fi
   osascript -e 'display alert "A porta 8765 já está em uso" message "Feche o outro servidor que está usando essa porta e tente novamente." as warning'
@@ -27,7 +27,7 @@ nohup python3 -m http.server "$PORT" --bind "$HOST" --directory "$APP_DIR" >"$LO
 sleep 1
 
 if curl -fsS "$URL" >/dev/null 2>&1; then
-  open "$URL"
+  open -na "Google Chrome" --args --app="$URL"
 else
   osascript -e 'display alert "Não consegui abrir o Metas Diárias" message "Veja o arquivo /tmp/metas-diarias-servidor.log para detalhes." as critical'
   exit 1
