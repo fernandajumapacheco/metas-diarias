@@ -3,40 +3,87 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metas Diárias da Fernanda</title>
+  <meta name="description" content="Metas Diárias para Meninas é um planner diário simples para organizar pequenas metas, acompanhar seu progresso e manter um histórico no navegador.">
+  <meta name="theme-color" content="#FBF8FF">
+  <meta property="og:title" content="Metas Diárias para Meninas">
+  <meta property="og:description" content="Pequenas metas. Grandes dias. Um planner diário simples, delicado e salvo no seu navegador.">
+  <meta property="og:type" content="website">
+  <title>Metas Diárias para Meninas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <main class="painel">
-    <p class="etiqueta">MEU PRIMEIRO APP</p>
-    <h1>Metas da Fernanda ✨</h1>
-    <p id="data-atual"></p>
-    <p class="subtitulo">Organize uma ideia por vez.</p>
+  <main class="app-shell">
+    <section class="planner" aria-labelledby="app-title">
+      <header class="hero">
+        <p id="data-atual" class="date-label"></p>
+        <h1 id="app-title" class="app-title">
+          <span>Metas Diárias</span>
+          <em>para Meninas</em>
+        </h1>
+        <p class="tagline">Pequenas metas. Grandes dias. <span aria-hidden="true">✦</span></p>
+      </header>
 
-    <form id="formulario">
-      <input id="nova-meta" placeholder="Digite uma nova meta…" required>
-      <button type="submit">Adicionar</button>
-    </form>
+      <form id="formulario" class="add-form" autocomplete="off">
+        <label class="input-shell" for="nova-meta">
+          <span class="input-plus" aria-hidden="true">+</span>
+          <input id="nova-meta" name="nova-meta" type="text" maxlength="300" placeholder="Digite uma nova meta…" required>
+        </label>
+        <button class="add-button" type="submit">
+          <span class="add-label">Adicionar</span>
+          <span class="add-symbol" aria-hidden="true">+</span>
+        </button>
+      </form>
 
-    <div class="resumo">
-      <span id="contador">0 de 0 concluídas</span>
-      <button id="limpar" type="button">Limpar concluídas</button>
-    </div>
-    <ul id="lista"></ul>
+      <section class="progress-section" aria-label="Progresso do dia">
+        <div class="progress-meta">
+          <p id="contador" class="counter" aria-live="polite">0 de 0 concluídas ✦</p>
+          <button id="limpar" class="text-action clear-action" type="button">Limpar concluídas</button>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div id="barra-progresso" class="progress-fill"></div>
+        </div>
+      </section>
 
-    <div class="acoes">
-      <button id="concluir-dia" type="button">✓ Concluir o dia</button>
-      <button id="exportar" type="button" class="secundario">Salvar backup</button>
-      <label class="botao secundario" for="arquivo-backup">Restaurar backup</label>
-      <input id="arquivo-backup" type="file" accept="application/json,.json" hidden>
-    </div>
+      <section class="goals-section" aria-label="Metas de hoje">
+        <ul id="lista" class="goal-list"></ul>
+        <p id="lista-vazia" class="empty-state">Nenhuma meta por aqui ainda. Comece pela primeira ✦</p>
+      </section>
 
-    <section class="historico">
-      <h2>Histórico por dia</h2>
-      <div id="historico-vazio">O histórico aparecerá aqui.</div>
-      <ul id="lista-historico"></ul>
+      <button id="concluir-dia" class="finish-day" type="button">
+        <span>✓ Concluir o dia</span>
+        <span class="reward-sparkles" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i></span>
+      </button>
+
+      <section class="data-tools" aria-labelledby="data-tools-title">
+        <p id="data-tools-title" class="data-label">Seus dados</p>
+        <div class="data-actions">
+          <button id="exportar" class="text-action" type="button">Salvar backup</button>
+          <label class="text-action file-action" for="arquivo-backup">Restaurar backup</label>
+          <input id="arquivo-backup" type="file" accept="application/json,.json" hidden>
+        </div>
+      </section>
+
+      <section class="history" aria-labelledby="historico-titulo">
+        <button id="historico-toggle" class="history-toggle" type="button" aria-expanded="false" aria-controls="historico-conteudo">
+          <span id="historico-titulo" class="history-title">Histórico por dia</span>
+          <span class="history-summary">
+            <span id="historico-contagem">0 dias</span>
+            <span class="history-arrow" aria-hidden="true">▾</span>
+          </span>
+        </button>
+        <div id="historico-conteudo" class="history-content" hidden>
+          <p id="historico-vazio" class="history-empty">O histórico aparecerá aqui.</p>
+          <ul id="lista-historico" class="history-list"></ul>
+        </div>
+      </section>
+
+      <p id="feedback" class="sr-only" aria-live="polite"></p>
     </section>
   </main>
-  <script src="script.js"></script>
 </body>
 </html>
