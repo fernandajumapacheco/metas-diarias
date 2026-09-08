@@ -8,3 +8,7 @@ node_modules/
 antigos/
 *.textClipping
 *.zip
+BACKUP/
+assets/icons/*.iconset/
+atalho de *
+Imagem do Codex *.png
